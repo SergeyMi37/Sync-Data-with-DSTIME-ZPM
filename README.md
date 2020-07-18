@@ -36,14 +36,14 @@ Typical scenario:
   SAMPLES>write ##class(OBJ.Person).Populate(15)  
   15  
   SAMPLES>do $system.SQL.Shell()  
-  SAMPLES>DELETE FROM OBJ.PERSON WHERE ID IN (2,5,9)  
-  SAMPLES>Update OBJ.PERSON SET NAME='Robert' WHERE ID IN (3,7)  
+  SAMPLES>>DELETE FROM OBJ.PERSON WHERE ID IN (2,5,9)  
+  SAMPLES>>Update OBJ.PERSON SET NAME='Robert' WHERE ID IN (3,7)  
 ~~~
 
 Now we can take a look on OBJ.DSTIME  
 
 ~~~
-  SAMPLES>SELECT * FROM OBJ.DSTIME  
+  SAMPLES>>SELECT * FROM OBJ.DSTIME  
      
   DSTIME  ClassName       ObjectId     FilingOp     LastVersion  Version 
   0       OBJ.Person      1            1            0            0     
