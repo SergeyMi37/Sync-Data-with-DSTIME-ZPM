@@ -30,10 +30,10 @@ Property SSN As %String(PATTERN = "3N1""-""2N1""-""4N") [ Required ];
 Property DOB As %Date(POPSPEC = "Date()");
 
 /// Person's home address. This uses an embedded object.
-Property Home As Sample.Address;
+Property Home As OBJ.Address;
 
 /// Person's office address. This uses an embedded object.
-Property Office As Sample.Address;
+Property Office As OBJ.Address;
 
 /// Person's spouse. This is a reference to another persistent object.
 Property Spouse As Person;
@@ -96,7 +96,7 @@ ClassMethod PrintPersonsSQL()
 {
     // use dynamic SQL result set to find person data
     Set query = ##class(%ResultSet).%New("%DynamicQuery:SQL")
-    Do query.Prepare("SELECT ID, Name, SSN FROM Sample.Person ORDER BY Name")
+    Do query.Prepare("SELECT ID, Name, SSN FROM OBJ.Person ORDER BY Name")
     Do query.Execute()
     
     While (query.Next()) {
@@ -133,7 +133,7 @@ ClassMethod UpdateProcTest(
 {
     New %ROWCOUNT,%ROWID
     
-    &sql(UPDATE Sample.Person 
+    &sql(UPDATE OBJ.Person 
     SET Home_City = :city, Home_State = :state 
     WHERE Home_Zip = :zip)
     
@@ -150,11 +150,11 @@ ClassMethod UpdateProcTest(
 /// This query can be used within another Cach&eacute; method (using the
 /// <class>%ResultSet</class> class), from Java, or from ActiveX.<br>
 /// This query is also accessible from ODBC and/or JDBC as the SQL stored procedure 
-/// <b>SP_Sample_By_Name</b>.
-Query ByName(name As %String = "") As %SQLQuery(CONTAINID = 1, SELECTMODE = "RUNTIME") [ SqlName = SP_Sample_By_Name, SqlProc ]
+/// <b>SP_OBJ_By_Name</b>.
+Query ByName(name As %String = "") As %SQLQuery(CONTAINID = 1, SELECTMODE = "RUNTIME") [ SqlName = SP_OBJ_By_Name, SqlProc ]
 {
 SELECT ID, Name, DOB, SSN
-FROM Sample.Person
+FROM OBJ.Person
 WHERE (Name %STARTSWITH :name)
 ORDER BY Name
 }
