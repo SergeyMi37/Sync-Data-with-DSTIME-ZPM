@@ -87,3 +87,5 @@ e.g.
 **Attention**  
 This solution uses the **actual** content of your Objects / Tables.
 So if the version of the object log is out of date you may see some newer content if additional changes were applied since.
+
+[Article in DC](https://community.intersystems.com/post/synchronize-data-dstime)
