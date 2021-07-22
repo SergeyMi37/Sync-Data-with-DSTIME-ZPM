@@ -3,7 +3,7 @@
   <Document name="sync-dstime.ZPM">
     <Module>
       <Name>sync-dstime</Name>
-      <Version>1.0.3</Version>
+      <Version>1.0.4</Version>
       <Description>Sync Data with DSTIME</Description>
       <Keywords>DSTIME, data sync</Keywords>
       <Packaging>module</Packaging>
