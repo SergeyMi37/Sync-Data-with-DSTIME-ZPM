@@ -61,9 +61,7 @@ Method PrintPerson()
 
 /// A simple, sample method: add two numbers (<var>x</var> and <var>y</var>) 
 /// and return the result.
-Method Addition(
-    x As %Integer = 1,
-    y As %Integer = 1) As %Integer
+Method Addition(x As %Integer = 1, y As %Integer = 1) As %Integer
 {
     Quit x + y // comment
 }
@@ -110,9 +108,7 @@ ClassMethod PrintPersonsSQL()
 /// class method. This method can be called as a stored procedure via 
 /// ODBC or JDBC.<br>
 /// In this case this method returns the concatenation of a string value.
-ClassMethod StoredProcTest(
-    name As %String,
-    ByRef response As %String) As %Integer [ SqlName = Stored_Procedure_Test, SqlProc ]
+ClassMethod StoredProcTest(name As %String, ByRef response As %String) As %Integer [ SqlName = Stored_Procedure_Test, SqlProc ]
 {
     // Set response to the concatenation of name.
     Set response = name _ "||" _ name
@@ -126,10 +122,7 @@ ClassMethod StoredProcTest(
 /// using embedded SQL. The update modifies the embedded properties 
 /// <var>Home.City</var> and <var>Home.State</var> for all rows whose 
 /// <var>Home.Zip</var> is equal to <var>zip</var>.
-ClassMethod UpdateProcTest(
-    zip As %String,
-    city As %String,
-    state As %String) As %Integer [ SqlProc ]
+ClassMethod UpdateProcTest(zip As %String, city As %String, state As %String) As %Integer [ SqlProc ]
 {
     New %ROWCOUNT,%ROWID
     
@@ -159,5 +152,41 @@ WHERE (Name %STARTSWITH :name)
 ORDER BY Name
 }
 
+Storage Default
+{
+<Data name="PersonDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+<Value name="3">
+<Value>SSN</Value>
+</Value>
+<Value name="4">
+<Value>DOB</Value>
+</Value>
+<Value name="5">
+<Value>Home</Value>
+</Value>
+<Value name="6">
+<Value>Office</Value>
+</Value>
+<Value name="7">
+<Value>Spouse</Value>
+</Value>
+<Value name="8">
+<Value>FavoriteColors</Value>
+</Value>
+</Data>
+<DataLocation>^OBJ.PersonD</DataLocation>
+<DefaultData>PersonDefaultData</DefaultData>
+<IdLocation>^OBJ.PersonD</IdLocation>
+<IndexLocation>^OBJ.PersonI</IndexLocation>
+<StreamLocation>^OBJ.PersonS</StreamLocation>
+<Type>%Storage.Persistent</Type>
+}
 
 }
+
